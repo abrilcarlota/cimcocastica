@@ -13,18 +13,19 @@ class escritorController extends Controller
     //CREACIÓN DE LA FUNCIÓN INDEX
     
     public function index(){
-        $escritores= Escritor::all();
-        return view('admin.escritores.list_escritores',compact("escritores"));
+        $escritore= Escritor::all();
+        $users= User::all();
+        return view('admin.escritores.list_escritores',compact("escritore","users"));
     }
     //CREACIÓN DE LA FUNCIÓN CREATE
 
     public function create(){
-        $escritor= new Escritor;
+        $escritore= new Escritor;
         $user= new User;
         $title= __("Alta escritor");
         $textButton=__("Añadir");
         $route= route("admin.escritores.store");
-        return view("admin.escritores.create", compact("title", "textButton", "route","escritor","user"));
+        return view("admin.escritores.create", compact("title", "textButton", "route","escritore","user"));
     }
 
     //CREACIÓN DE LA FUNCIÓN STORE
@@ -44,7 +45,7 @@ class escritorController extends Controller
         $user->escritor()->create($request->only("nombre","apellidos","direccion"));
 
         return redirect(route("admin.escritores.index"))
-        ->width("success",__("Escritor dado de alta correctamente"));
+        ->with("success",__("Escritor dado de alta correctamente"));
     }
     
 
@@ -55,17 +56,18 @@ class escritorController extends Controller
         }
 
         //CREACIÓN DE LA FUNCIÓN EDIT
-        public function edit(Escritor $escritor, User $user){
+        public function edit(Escritor $escritore){
+            $users = User::find($escritore->user_id);
             $update=true;
             $title=__("Editar Escritor");
             $textButton=__("Actualizar");
-            $route= route("admin.escritores.update",["escritor"=>$escritor,"user"=>$user]);
-            return view("admin.escritores.edit", compact("update","title","textButton","route","escritor","user"));
+            $route= route("admin.escritores.update",["escritore"=>$escritore,"users"=>$users]);
+            return view("admin.escritores.edit", compact("update","title","textButton","route","escritore","users"));
 
         }
 
         //CREACIÓN DE LA FUNCIÓN UPDATE
-        public function update(Request $request, Escritor $escritor, User $user){
+        public function update(Request $request, Escritor $escritore, User $user){
 
             $this->validate($request,[
             "nombre"=>"required",
@@ -75,17 +77,17 @@ class escritorController extends Controller
             "email"=>"required|string|email|max:255",
             "password"=>"required|string|min:8",
             ]);
-            $user->fill($request->only("name","email"))->save();
-            $escritor->fill($request->only("nombre","apellidos","direccion"))->save();
+            $user->fill($request->only("name","email","password"))->save();
+            $escritore->fill($request->only("nombre","apellidos","direccion"))->save();
             return redirect(route("admin.escritores.index"))
-            ->width("success",__("Escritor actualizado!"));
+            ->with("success",__("Escritor actualizado!"));
 
         }
 
         //CREACIÓN DE LA FUNCIÓN DESTROY
         public function destroy(Escritor $escritor){
             $escritor->delete();
-            return back()->width("success",__("Escritor dado de baja correctamente"));
+            return back()->with("success",__("Escritor dado de baja correctamente"));
         }
 
 

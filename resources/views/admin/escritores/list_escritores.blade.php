@@ -15,30 +15,34 @@
         <tr>
             <th class="px-4 py-2">{{ ("Nombre") }}</th>
             <th class="px-4 py-2">{{ ("Apellidos") }}</th>
-            <th class="px-4 py-2">{{ ("Name") }}</th>
             <th class="px-4 py-2">{{ ("Direccion") }}</th>
+            <th class="px-4 py-2">{{ ("Name") }}</th>
             <th class="px-4 py-2">{{ ("Email") }}</th>
             <th class="px-4 py-2">{{ ("Contraseña") }}</th>
         </tr>
         </thead>
         <tbody>
-            @forelse($escritores as $escritor)
+            @forelse($escritore as $escritor)
                 <tr>
 
                     <td class="border px-4 py-2">{{ $escritor->nombre }}</td>
 
                     <td class="border px-4 py-2">{{ $escritor->apellidos }}</td>
 
-                    <td class="border px-4 py-2">{{ $escritor->name }}</td>
-
                     <td class="border px-4 py-2">{{ $escritor->direccion }}</td>
+                    
+                    @foreach($users as $user)
+                        @if($user->id == $escritor->user_id)
+                            <td class="border px-4 py-2">{{ $user->name }}</td>
 
-                    <td class="border px-4 py-2">{{ $escritor->email }}</td>
+                            <td class="border px-4 py-2">{{ $user->email }}</td>
 
-                    <td class="border px-4 py-2">{{ $escritor->contraseña }}</td>
+                            <td class="border px-4 py-2">{{ $user->password }}</td>
+                        @endif
+                    @endforeach
 
                     <td class="border px-4 py-2">
-                        <a href="{{ route('admin.escritores.edit', ['escritor' => $escritor]) }}" class="btn btn-primary text-blue-400">{{ __("Editar") }}</a>
+                        <a href="{{ route('admin.escritores.edit', ['escritore' => $escritor]) }}" class="btn btn-primary text-blue-400">{{ __("Editar") }}</a>
                         <a
                             href="#"
                             class="btn btn-danger text-red-400"
@@ -46,7 +50,7 @@
                                 document.getElementById('delete-escritor-{{ $escritor->id }}-form').submit();"
                         >{{ __("Eliminar") }}
                         </a>
-                        <form id="delete-escritor-{{ $escritor->id }}-form" action="{{ route('admin.escritores.destroy', ['escritor' => $escritor]) }}" method="POST" class="hidden">
+                        <form id="delete-escritor-{{ $escritor->id }}-form" action="{{ route('admin.escritores.destroy', ['escritore' => $escritor]) }}" method="POST" class="hidden">
                             @method("DELETE")
                             @csrf
                         </form>

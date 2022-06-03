@@ -17,7 +17,13 @@ class CreateEscritores extends Migration
             $table->id();
             $table->string("nombre");
             $table->string("apellidos");
+            $table->string("direccion");
             $table->timestamps();
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users');
         });
     }
 

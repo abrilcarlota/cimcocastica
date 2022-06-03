@@ -9,7 +9,7 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold -my-1 mb-3" for="nombre">
                 {{ __("Nombre Lector") }}
             </label>
-            <input name="nombre" value="{{ old('nombre') ?? $lector->nombre }}" class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="nombre" type="text">
+            <input name="nombre" value="{{ old('nombre') ?? $lectore->nombre }}" class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="nombre" type="text">
             <p class="text-gray-600 text-xs italic -my-3">{{ __("Nombre Lector") }}</p>
             @error("nombre")
             <div class="border border-red-400 rounded-b bg-red-100 mt-1 px-4 py-3 text-red-700">
@@ -24,7 +24,7 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold -my-1 mb-3" for="apellidos">
                 {{ __("Apellidos Lector") }}
             </label>
-            <input name="apellidos" value="{{ old('apellidos') ?? $lector->apellidos }}" class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="direccion" type="text">
+            <input name="apellidos" value="{{ old('apellidos') ?? $lectore->apellidos }}" class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="direccion" type="text">
             <p class="text-gray-600 text-xs italic -my-3">{{ __("Apellidos Escritor") }}</p>
             @error("apellidos")
             <div class="border border-red-400 rounded-b bg-red-100 mt-1 px-4 py-3 text-red-700">
@@ -40,7 +40,7 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold -my-1 mb-3" for="direccion">
                 {{ __("Dirección Lector") }}
             </label>
-            <input name="direccion" value="{{ old('direccion') ?? $lector->direccion }}" class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="direccion" type="text">
+            <input name="direccion" value="{{ old('direccion') ?? $lectore->direccion }}" class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="direccion" type="text">
             <p class="text-gray-600 text-xs italic -my-3">{{ __("Dirección Lector") }}</p>
             @error("direccion")
             <div class="border border-red-400 rounded-b bg-red-100 mt-1 px-4 py-3 text-red-700">
@@ -55,7 +55,7 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold -my-1 mb-3" for="name">
                 {{ __("Name") }}
             </label>
-            <input name="name" value="{{ old('name') ?? $lector->name }}" class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="name" type="text">
+            <input name="name" value="{{ old('name') ?? $lectore->name }}" class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="name" type="text">
             <p class="text-gray-600 text-xs italic -my-3">{{ __("Name") }}</p>
             @error("name")
             <div class="border border-red-400 rounded-b bg-red-100 mt-1 px-4 py-3 text-red-700">

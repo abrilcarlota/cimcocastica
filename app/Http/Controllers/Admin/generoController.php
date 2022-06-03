@@ -37,7 +37,7 @@ class generoController extends Controller
 
 
         return redirect(route("admin.generos.index"))
-        ->width("success",__("Género dado de alta correctamente"));
+        ->with("success",__("Género dado de alta correctamente"));
     }
     
 
@@ -65,14 +65,14 @@ class generoController extends Controller
             ]);
             $genero->fill($request->only("nombre"))->save();
             return redirect(route("admin.generos.index"))
-            ->width("success",__("Género actualizado!"));
+            ->with("success",__("Género actualizado!"));
 
         }
 
         //CREACIÓN DE LA FUNCIÓN DESTROY
         public function destroy(Genero $genero){
             $genero->delete();
-            return back()->width("success",__("Género dado de baja correctamente"));
+            return back()->with("success",__("Género dado de baja correctamente"));
         }
 
 

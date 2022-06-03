@@ -22,7 +22,7 @@
         </tr>
         </thead>
         <tbody>
-            @forelse($lectores as $lector)
+            @forelse($lectore as $lector)
                 <tr>
 
                     <td class="border px-4 py-2">{{ $lector->nombre }}</td>
@@ -38,7 +38,7 @@
                     <td class="border px-4 py-2">{{ $lector->contraseña }}</td>
 
                     <td class="border px-4 py-2">
-                        <a href="{{ route('admin.lectores.edit', ['lector' => $lector]) }}" class="btn btn-primary text-blue-400">{{ __("Editar") }}</a>
+                        <a href="{{ route('admin.lectores.edit', ['lectore' => $lector]) }}" class="btn btn-primary text-blue-400">{{ __("Editar") }}</a>
                         <a
                             href="#"
                             class="btn btn-danger text-red-400"
@@ -46,7 +46,7 @@
                                 document.getElementById('delete-lector-{{ $lector->id }}-form').submit();"
                         >{{ __("Eliminar") }}
                         </a>
-                        <form id="delete-lector-{{ $lector->id }}-form" action="{{ route('admin.lectores.destroy', ['lector' => $lectorr]) }}" method="POST" class="hidden">
+                        <form id="delete-lector-{{ $lector->id }}-form" action="{{ route('admin.lectores.destroy', ['lectore' => $lector]) }}" method="POST" class="hidden">
                             @method("DELETE")
                             @csrf
                         </form>

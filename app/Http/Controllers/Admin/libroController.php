@@ -13,7 +13,7 @@ class libroController extends Controller
     
     public function index(){
         $libros= Libro::all();
-        return view('admin.libros.list_generos',compact("libros"));
+        return view('admin.libros.list_libros',compact("libros"));
     }
     //CREACIÓN DE LA FUNCIÓN CREATE
 

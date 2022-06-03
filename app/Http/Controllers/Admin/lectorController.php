@@ -13,18 +13,18 @@ class lectorController extends Controller
     //CREACIÓN DE LA FUNCIÓN INDEX
     
     public function index(){
-        $lectores= Lector::all();
-        return view('admin.lectores.list_lectores',compact("lectores"));
+        $lectore= Lector::all();
+        return view('admin.lectores.list_lectores',compact("lectore"));
     }
     //CREACIÓN DE LA FUNCIÓN CREATE
 
     public function create(){
-        $lector= new Lector;
+        $lectore= new Lector;
         $user= new User;
         $title= __("Alta lector");
         $textButton=__("Añadir");
         $route= route("admin.lectores.store");
-        return view("admin.lectores.create", compact("title", "textButton", "route","lector","user"));
+        return view("admin.lectores.create", compact("title", "textButton", "route","lectore","user"));
     }
 
     //CREACIÓN DE LA FUNCIÓN STORE
